@@ -29,8 +29,7 @@ jobs:
         run: |
           newman run "Inwarranty-flow Collection Latest.postman_collection.json" \
           -e "./QA Environment.postman_environment.json" \
-          -r htmlextra \
-          --verbose || echo "Newman run failed"
+          -r htmlextra,cli \
 
       - name: Upload Newman HTML Report
         if: always()
