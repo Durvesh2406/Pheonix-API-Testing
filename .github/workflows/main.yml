@@ -26,6 +26,6 @@ jobs :
 
       - name: Run the Postman Collection with newman
         run: |
-         newman 'Inwarranty-flow Collection Latest.postman_collection.json' \
+         newman run 'Inwarranty-flow Collection Latest.postman_collection.json' \
          -e 'QA Environment.postman_environment.json' \
          -r htmlextra
