@@ -28,6 +28,12 @@ jobs:
       - name: Run the Postman Collection with Newman
         run: |
           newman run "Inwarranty-flow Collection Latest.postman_collection.json" \
-          -e "QA Environment.postman_environment.json" \
+          -e "./QA Environment.postman_environment.json" \
           -r htmlextra \
           --verbose
+
+      - name: Upload Newman HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: newman-report
+          path: newman/report.html
