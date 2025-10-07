@@ -2,10 +2,10 @@ name : Run API Test
 on :
   push:
     branches: [main]
-  workflow_dispatch :
+  workflow_dispatch:
   schedule :
-   - cron : 30 2 * * *
-   - cron : 30 13 * * *
+   - cron : '30 2 * * *'
+   - cron : '30 13 * * *'
 
 jobs :
   run-tests :
@@ -17,7 +17,7 @@ jobs :
       - name: Setup Node.js environment
         uses: actions/setup-node@v5.0.0
         with:
-         node version: '22'
+         node-version: '22'
 
       - name: Install Newman
         run: |
@@ -28,4 +28,5 @@ jobs :
         run: |
          newman run 'Inwarranty-flow Collection Latest.postman_collection.json' \
          -e 'QA Environment.postman_environment.json' \
-         -r htmlextra
+         -r htmlextra \
+         --verbose
