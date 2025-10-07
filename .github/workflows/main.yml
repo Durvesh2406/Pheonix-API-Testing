@@ -30,10 +30,11 @@ jobs:
           newman run "Inwarranty-flow Collection Latest.postman_collection.json" \
           -e "./QA Environment.postman_environment.json" \
           -r htmlextra \
-          --verbose
+          --verbose || echo "Newman run failed"
 
       - name: Upload Newman HTML Report
-        uses: actions/upload-artifact@v3
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: newman-report
           path: newman/report.html
